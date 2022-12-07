@@ -8,3 +8,4 @@ router.post('/signup', password, email, userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 module.exports = router;
+

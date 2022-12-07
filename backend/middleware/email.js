@@ -8,3 +8,4 @@ module.exports = (req, res, next) => {
         return res.status(400).json({error: `L'email ${email} n'est pas valide`})
     }
 }
+

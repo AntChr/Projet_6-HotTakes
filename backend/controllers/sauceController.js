@@ -40,16 +40,18 @@ exports.createSauce = (req, res, next) => {
             if (object.userId != req.auth.userId) {
                 res.status(401).json({ message : 'Not authorized'});
             } else {
+                const filename = object.imageUrl.split('/images/')[1];
+                fs.unlink(`images/${filename}`, () => {
                 sauceModel.updateOne({ _id: req.params.id}, { ...sauceObject, _id: req.params.id})
                 .then(() => res.status(200).json({message : 'Sauce modifié!'}))
                 .catch(error => res.status(401).json({ error }));
-            }
+            })
+        }
         })
         .catch((error) => {
             res.status(400).json({ error });
         });
  };
-
  exports.deleteSauce = (req, res, next) => {
     sauceModel.findOne({ _id: req.params.id})
         .then(sauce => {

@@ -15,3 +15,4 @@ const sauceSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('sauceModel', sauceSchema);
+
